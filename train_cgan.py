@@ -85,8 +85,8 @@ def generator_loss(fake_logits, real_label, pred_label):
     return adv_loss + cnt_loss
 
 # Define optimizers
-g_optimizer = tf.keras.optimizers.Adam(learning_rate=3e-4)
-d_optimizer = tf.keras.optimizers.Adam(learning_rate=3e-4)
+g_optimizer = tf.keras.optimizers.Adam(learning_rate=1e-4)
+d_optimizer = tf.keras.optimizers.Adam(learning_rate=1e-4)
 
 
 # Define training loop
@@ -155,4 +155,4 @@ def train(num_epochs, epochs_between_val=10, path='training_progess_cgan/'):
     utils.generate_images(generator, val_dataset, filename, val_labels)
 
 
-train(20, epochs_between_val=2)
+train(50, epochs_between_val=2)
