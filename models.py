@@ -19,7 +19,8 @@ def get_generator(input_shape, conditional=False):
         model = Conv2D(num_filters, (3,3), padding='same', kernel_initializer=tf.initializers.HeNormal())(x)
         model = BatchNormalization()(model)
         model = LeakyReLU(alpha=0.1)(model)
-        model = UpSampling2D(size=(2,2), interpolation='bilinear')(model)
+        # model = UpSampling2D(size=(2,2), interpolation='bilinear')(model)
+        model = Conv2DTranspose(num_filters, (5,5), strides=(2,2), padding='same', kernel_initializer=tf.initializers.HeNormal())(model)
         return model
 
     model = block(model, 64) # --> [14,14,64]
